@@ -7,7 +7,7 @@ pipeline {
             steps{
                 cleanWs()
                 checkout scm: [$class: 'GitSCM', branches: [[name: '*/main']],userRemoteConfigs:
-                [[credentialsId: 'github-ssh-key', url: 'git@github.com:mnorm88/junit-automation.git']]]
+                [[credentialsId: 'github-ssh-key', url: 'git@github.com:venkateshash/junit-automation.git']]]
             }
         }
 
@@ -22,7 +22,7 @@ pipeline {
         stage('Test'){
             steps{
                 sh 'cd src/ ; java -jar ../lib/junit-platform-console-standalone-1.7.0-all.jar -cp "." --select-class CarTest --reports-dir="reports"'
-                junit 'src/reports/*-jupiter.xml'
+               
             }
         }
 
